@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Morning, Marcky ❤️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #1a0033, #4a0080);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 10;
+      max-width: 90%;
+    }
+
+    .terminal {
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #ff69b4;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 40px;
+      font-family: monospace;
+      text-align: left;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+    }
+
+    .typing {
+      color: #00ffcc;
+      white-space: pre-wrap;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      margin: 20px 0 10px;
+      background: linear-gradient(90deg, #ff69b4, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .signature {
+      margin-top: 40px;
+      font-size: 1.5rem;
+      color: #ffd700;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 2.5rem;
+      color: #ff1493;
+      animation: floatHeart 8s linear infinite;
+      opacity: 0.9;
+      z-index: 5;
+      text-shadow: 0 0 10px #ff1493;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(25deg); }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="romanticMusic" autoplay loop>
+    <source src="https://assets.mixkit.co/sfx/preview/296/296-preview.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <div class="terminal">
+      <div class="typing" id="typing"></div>
+    </div>
+
+    <h1>Good Morning, Marcky ❤️</h1>
+    <p>Every day feels brighter knowing you're in my life.<br>
+    You make my heart run at full compile speed.<br><br>
+    Can't wait to talk to you and make today beautiful together.</p>
+    
+    <div class="signature">from your nerd Crushie</div>
+  </div>
+
+  <script>
+    const codeLines = [
+      "// Initializing the best day ever...",
+      "const marcky = {",
+      "  name: 'Marcky',",
+      "  smile: 'dangerously addictive',",
+      "  effect: 'makes my heart overflow'",
+      "};",
+      "",
+      "function sendLove() {",
+      "  return 'Good morning, my favorite person ❤️';",
+      "}",
+      "",
+      "// Executing sendLove()...",
+      "console.log('Loading infinite affection... [██████████] 100%')"
+    ];
+
+    let i = 0;
+    let j = 0;
+    const typingElement = document.getElementById('typing');
+
+    function typeCode() {
+      if (i < codeLines.length) {
+        if (j < codeLines[i].length) {
+          typingElement.textContent += codeLines[i].charAt(j);
+          j++;
+          setTimeout(typeCode, 30);
+        } else {
+          typingElement.textContent += '\n';
+          i++;
+          j = 0;
+          setTimeout(typeCode, 400);
+        }
+      }
+    }
+
+    // Start typing
+    setTimeout(() => {
+      typeCode();
+    }, 800);
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = ['❤️', '💖', '💗', '💘'][Math.floor(Math.random()*4)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 6 + 7) + 's';
+      heart.style.fontSize = (Math.random() * 1.5 + 2) + 'rem';
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 15000);
+    }
+
+    setInterval(createHeart, 280);
+    for (let k = 0; k < 8; k++) setTimeout(createHeart, k * 200);
+
+    // Music volume
+    window.addEventListener('load', () => {
+      const music = document.getElementById('romanticMusic');
+      music.volume = 0.35;
+    });
+  </script>
+</body>
+</html>
